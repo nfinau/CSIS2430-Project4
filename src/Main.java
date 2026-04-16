@@ -1,6 +1,3 @@
-
----
-
 ## 🔹 `src/Main.java`
 
 ```java
