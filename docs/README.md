@@ -7,3 +7,4 @@ This project is being completed independently.
 - Test Plan
 - Test Results
 - Contributions
+- Pseudocode
