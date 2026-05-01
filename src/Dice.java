@@ -3,14 +3,20 @@ import java.util.Random;
 public class Dice {
 
     private Random random;
+    private int die1;
+    private int die2;
 
     public Dice() {
         random = new Random();
     }
 
     public int roll() {
-        int die1 = random.nextInt(6) + 1;
-        int die2 = random.nextInt(6) + 1;
+        die1 = random.nextInt(6) + 1;
+        die2 = random.nextInt(6) + 1;
         return die1 + die2;
+    }
+
+    public boolean isDouble() {
+        return die1 == die2;
     }
 }
