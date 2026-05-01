@@ -7,6 +7,21 @@ The simulation focuses on core movement mechanics, including dice rolls, doubles
 
 Results from the simulation will be used to calculate landing frequencies and identify the most commonly visited spaces on the board.
 
+## Current Status
+
+The simulation has been implemented with the following features:
+
+- Dice rolling with two six-sided dice  
+- Doubles detection and three-doubles-to-jail rule  
+- Player movement with board wrapping  
+- Jail mechanics (entering, staying, and exiting jail)  
+- Go To Jail space behavior  
+- Chance and Community Chest movement cards  
+- Landing frequency tracking for all 40 board spaces  
+- Output displaying space names, counts, and percentages  
+
+Testing and verification are currently in progress.
+
 ## How to Run
 ```bash
 javac src/*.java
