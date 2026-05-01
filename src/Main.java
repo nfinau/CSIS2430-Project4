@@ -1,8 +1,7 @@
-## 🔹 `src/Main.java`
-
-```java
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Project 4 setup ready.");
+        Simulation simulation = new Simulation(10000);
+        simulation.run();
+        simulation.printResults();
     }
 }
