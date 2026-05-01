@@ -18,8 +18,12 @@ public class Player {
         return position;
     }
 
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
     public void sendToJail() {
-        position = 10; // Jail index
+        position = Board.JAIL;
         inJail = true;
         jailTurns = 0;
     }
