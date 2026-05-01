@@ -108,11 +108,16 @@ public class Simulation {
         }
     }
 
-    public void printResults() {
-        System.out.println("Landing Frequencies:");
-        for (int i = 0; i < landingCounts.length; i++) {
-            double percentage = (landingCounts[i] * 100.0) / totalTurns;
-            System.out.printf("Space %d: %d landings (%.2f%%)%n", i, landingCounts[i], percentage);
-        }
+   public void printResults() {
+    System.out.println("Landing Frequencies:");
+    for (int i = 0; i < landingCounts.length; i++) {
+        double percentage = (landingCounts[i] * 100.0) / totalTurns;
+        System.out.printf(
+            "%2d - %-25s : %5d landings (%.2f%%)%n",
+            i,
+            Board.getSpaceName(i),
+            landingCounts[i],
+            percentage
+        );
     }
 }
