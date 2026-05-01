@@ -3,12 +3,14 @@ public class Simulation {
     private int totalTurns;
     private Player player;
     private Dice dice;
+    private CardDeck cardDeck;
     private int[] landingCounts;
 
     public Simulation(int totalTurns) {
         this.totalTurns = totalTurns;
         this.player = new Player();
         this.dice = new Dice();
+        this.cardDeck = new CardDeck();
         this.landingCounts = new int[40];
     }
 
@@ -24,6 +26,7 @@ public class Simulation {
 
         if (player.isInJail()) {
             handleJailTurn();
+            resolveBoardSpace();
             landingCounts[player.getPosition()]++;
             return;
         }
@@ -44,10 +47,9 @@ public class Simulation {
             }
 
             player.move(roll);
+            resolveBoardSpace();
 
-            // Go To Jail square (index 30)
-            if (player.getPosition() == 30) {
-                player.sendToJail();
+            if (player.isInJail()) {
                 landingCounts[player.getPosition()]++;
                 return;
             }
@@ -74,10 +76,43 @@ public class Simulation {
         }
     }
 
+    private void resolveBoardSpace() {
+        int position = player.getPosition();
+
+        if (position == Board.GO_TO_JAIL) {
+            player.sendToJail();
+            return;
+        }
+
+        if (Board.isChance(position)) {
+            int newPosition = cardDeck.drawChanceCard(position);
+            player.setPosition(newPosition);
+
+            if (newPosition == Board.JAIL) {
+                player.sendToJail();
+                return;
+            }
+
+            if (Board.isCommunityChest(newPosition)) {
+                resolveBoardSpace();
+            }
+        }
+
+        if (Board.isCommunityChest(player.getPosition())) {
+            int newPosition = cardDeck.drawCommunityChestCard(player.getPosition());
+            player.setPosition(newPosition);
+
+            if (newPosition == Board.JAIL) {
+                player.sendToJail();
+            }
+        }
+    }
+
     public void printResults() {
         System.out.println("Landing Frequencies:");
         for (int i = 0; i < landingCounts.length; i++) {
-            System.out.println("Space " + i + ": " + landingCounts[i]);
+            double percentage = (landingCounts[i] * 100.0) / totalTurns;
+            System.out.printf("Space %d: %d landings (%.2f%%)%n", i, landingCounts[i], percentage);
         }
     }
 }
