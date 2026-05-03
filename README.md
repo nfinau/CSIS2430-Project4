@@ -5,11 +5,13 @@ This project is a simulation of player movement in the classic Monopoly board ga
 
 The simulation focuses on core movement mechanics, including dice rolls, doubles rules, jail behavior, and Chance and Community Chest card effects. It does not model money, property ownership, or full gameplay strategy.
 
-Results from the simulation will be used to calculate landing frequencies and identify the most commonly visited spaces on the board.
+Results from the simulation are used to calculate landing frequencies and identify the most commonly visited spaces on the board.
+
+---
 
 ## Current Status
 
-The simulation has been implemented with the following features:
+The simulation has been fully implemented and tested with the following features:
 
 - Dice rolling with two six-sided dice  
 - Doubles detection and three-doubles-to-jail rule  
@@ -20,9 +22,12 @@ The simulation has been implemented with the following features:
 - Landing frequency tracking for all 40 board spaces  
 - Output displaying space names, counts, and percentages  
 
-Testing and verification are currently in progress.
+Testing and verification have been completed, including sample output and full run evidence.
+
+---
 
 ## How to Run
+
 ```bash
 javac src/*.java
 java -cp src Main
